@@ -1,8 +1,41 @@
-﻿@{
+﻿@model List<Pizza>;
+@{
     ViewData["Title"] = "Home Page";
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pizzeria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+    <body>
+    <div class="wrapper text-center m-5" style="max-width: 1600px; margin: 0 auto;">
+            <h1 class="center m-5">La nostra pizzeria!</h1>
+        <div class="card-container d-flex align-items-center m-5" style="">
+                @foreach (var pizza in Model)
+                {
+                    <div class="card mx-5" style="width: 300px; height: 350px;">
+                        <a href="#">
+                            <div class="card-top" style="border-bottom: 1px solid gray;">
+                                <img src="@pizza.FotoPath" alt="Foto Pizza" style="max-width: 200px; height: 150px;" />    
+                            </div>
+                        </a>
+                        <div class="card-bot">
+                            <h3 class="card-title">@pizza.Nome</h3>
+                            <h5 class="d-inline" style="font-weight: 500">Ingredienti: </h5>
+                            <p class="card-text" style="font-style:italic;">@pizza.Descrizione</p>
+                            <br />
+                            <h5 class="d-inline" style="font-weight: 500">Prezzo: </h5>
+                            <span class="card-text">@pizza.Prezzo €</span>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </body>
+</html>
+
+
